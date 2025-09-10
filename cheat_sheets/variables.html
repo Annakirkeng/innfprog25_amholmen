@@ -7,6 +7,31 @@
 </head>
 <body>
     
-    <script></script>
+    <p id="navn"></p>
+    <p id="alder"></p>
+    <p id="melding"></p>
+
+    <script>
+        //Min første variabel
+        const name = "Anna"
+        //Min første console.log()
+        console.log(name)
+        //Min første utskrift
+        document.getElementById("navn").innerHTML = name
+        //Fødselsår
+        const birthYear = 2004
+        //År
+        let year = 2025
+        //Utregning av min alder basert på variablene birthYear og year
+        let age = year - birthYear
+
+        console.log(age)
+
+        document.getElementById("alder").innerHTML = age
+
+        //Konaktinering 
+        document.getElementById("melding").innerHTML =
+            "Hei, jeg heter " + name + " og jeg er " + age + " år gammel."
+    </script>
 </body>
 </html>

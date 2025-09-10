@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+</head>
+<body>
+    <ul id="profiles"></ul>
+    <script>
+        const lecturers = [
+            {
+                name: "Marius Akerbæk",
+                office: "D1-016",
+                email: "toremake@hiof.no",
+                birthyear: 1983,
+                courses: ["Innføring i programmering", "Kommunikasjonsdesign", "UI Designprosjekt","Utvikling av interaktive nettsteder"]
+            },
+            {
+                name: "Daniella Blauhut",
+                office: "D1-015",
+                email: "danielb@hiof.no",
+                birthyear: 1977,
+                courses: ["Designmetoder", "UI Designprosjekt"]
+            },
+            {
+                name: "Ann-Charlott Karlsen",
+                office: "D1-062",
+                email: "ackarlse@hiof.no",
+                birthyear: 1992,
+                courses: ["Webutvikling", "Utvikling av interaktive nettsteder"]
+            },
+            {
+                name: "Ole Edvard Ørebæk",
+                office: "D1-061A",
+                email: "oledvo@hiof.no",
+                birthyear: 1993,
+                courses: ["Innføring i datasikkerhet"]
+            },
+            {
+                name: "Thor Andreas Holberg Murtnes-Hatlestad",
+                office: "Hjemmekontor",
+                email: "thoraho@hiof.no",
+                birthyear: 1990,
+                courses: ["Innføring i programmering"]
+            },
+        ]
+
+        console.log(lecturers)
+
+        const profiles = document.getElementById("profiles")
+
+        lecturers.map(lecturer => {
+            profiles.innerHTML += `
+            <li>
+                <h3>${lecturer.name}</h3>
+                <span>Alder: ${2025 - lecturer.birthyear}</span>
+                <p>Kontor: ${lecturer.office}</p>
+                <a href="mailto:${lecturer.email}">Skriv til ${lecturer.name}</a>
+                <ul>
+                ${lecturer.courses.map(courses => {
+                    return `<li>${courses}</li>`
+                }).join("")}
+                </ul>
+                </li>`
+        })
+
+        // lecturers.filter(lec => lec.birthyear >= 1990).map(lecturer => {
+        //     profiles.innerHTML += `
+        //     <li>
+        //         <h3>${lecturer.name}</h3>
+        //         <span>Alder: ${2025 - lecturer.birthyear}</span>
+        //         <p>Kontor: ${lecturer.office}</p>
+        //         <a href="mailto:${lecturer.email}">Skriv til ${lecturer.name}</a>
+        //         </li>`
+        // })
+
+    </script>
+</body>
+</html>
