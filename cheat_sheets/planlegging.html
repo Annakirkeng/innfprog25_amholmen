@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planlegging</title>
+</head>
+<body>
+    <section>
+        <h2>Logg inn</h2>
+        <label for="email">
+            E-post:
+            <input type="text" id="email">
+        </label>
+        <label for="password">
+            Passord:
+            <input type="password" id="password">
+        </label>
+        <button id="loginbtn">Logg inn</button>
+        <a href="#">Glemt passord?</a>
+    </section>
+
+    <script>
+
+        const user = [
+            {
+                email: "annakirkeng@gmail.com",
+                password: "amholmen"
+            }
+        ]
+        //LOGIN
+        //TA IMOT INPUT FRA BRUKER
+            
+        //BUTTON
+        function verifyUser(){
+            //EPOST VERDI
+            const eMail = document.getElementById("email").value
+            //PASSORD VERDI
+            const password = document.getElementById("password").value
+            //SENDE INFORMASJON OG SJEKKE BRUKER
+                //FILTER
+                const filteredUser = users.filter(user => user.email === eMail && user.password === password)
+                //IF
+                //Hvis filteredUser[0] er tom skal noe skje
+                if(filteredUser[0]){
+                    console.log("Feil e-post eller passord")
+                    //Hvis ikke, skal noe annet skje
+                } else{
+                    console.log("Logget inn med" + eMail)
+                }
+        }
+        //Lagre knapp i variabel
+        const loginBtn = document.getElementById("loginbtn")
+        
+        //Lytte etter klikk
+        loginBtn.addEventListener("click", () => {
+            verifyUser()
+        })
+
+        //LINK
+            //SENDE BRUKER TIL SKJEMA FOR GLEMT PASSORD
+            
+
+
+    </script>
+</body>
+</html>
