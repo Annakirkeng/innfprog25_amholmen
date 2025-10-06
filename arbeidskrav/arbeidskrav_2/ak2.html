@@ -16,26 +16,63 @@
     <p>Finnes ordet "problemløsning" i Programmeringsord-arrayen? <span id="problemlosning_sjekk"></span></p>
     <h2>Problem 3</h2>
     <p>Gjennomsnittet av tallene i tall_array_en er <span id="avg_array_one"></span></p>
-    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_one"></span></p>
+    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_two"></span></p>
 
     <script>
         //PROBLEM 1
         const hexadecimal_characters = "ABCDEF1234567890"
         const hexadecimal_characters_array = Array.from(hexadecimal_characters)
         let random_color_code = "#"
+
+
         
         //Din kode for å løse problem 1 her.
+        function randomHexCode() {
+            for (let i = 0; i < 6; i++) {
+                const randomIndex = Math.floor(Math.random() * hexadecimal_characters_array.length)
+                random_color_code += hexadecimal_characters_array[randomIndex]
+            }
+            document.getElementById("random_color").innerHTML = random_color_code      
+            
+        }
+        randomHexCode()
+
+
 
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //Din kode for å løse problem 2 her.
+        function exists(word, Id){
+            if (programming_words.includes(word)){
+                document.getElementById(Id).innerHTML = "Ja."
+            } else {
+                document.getElementById(Id).innerHTML = "Nei."
+            }
+        }
+
+        exists("betingelse", "betingelse_sjekk")
+        exists("algoritme", "algoritme_sjekk")
+        exists("problemløsning", "problemlosning_sjekk")
+        
 
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17]
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //Din kode for å løse problem 3 her.
+        function gjennomsnitt(array, elementId){
+            let sum = 0
+            array.forEach(antall => {
+                sum += antall
+            })
+            
+            const average = sum / array.length
+            document.getElementById(elementId).innerHTML = average
+        }
+        gjennomsnitt(tall_array_en, "avg_array_one")
+        gjennomsnitt(tall_array_to, "avg_array_two")
+
     </script>
 </body>
 </html>
