@@ -16,23 +16,72 @@
     <p>Finnes ordet "problemløsning" i Programmeringsord-arrayen? <span id="problemlosning_sjekk"></span></p>
     <h2>Problem 3</h2>
     <p>Gjennomsnittet av tallene i tall_array_en er <span id="avg_array_one"></span></p>
-    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_one"></span></p>
+    <p>Gjennomsnittet av tallene i tall_array_to er <span id="avg_array_two"></span></p>
 
     <script>
         //PROBLEM 1
         
         //AI-kode for å løse problem 1 her.
+        function generateRandomHexColor() {
+            // Hex-tegn som kan brukes
+            const hexChars = '0123456789ABCDEF';
+            let color = '#';
+            // Velg 6 tilfeldige tegn
+            for (let i = 0; i < 6; i++) {
+                const randomIndex = Math.floor(Math.random() * hexChars.length);
+                color += hexChars[randomIndex];
+            }
+            return color;
+        }
+
+        // Generer farge og sett den inn i HTML
+        const randomColor = generateRandomHexColor();
+        document.getElementById('random_color').textContent = randomColor;
+
+
 
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
 
         //AI-kode for å løse problem 2 her.
 
+        // Funksjon som sjekker om ordet finnes i arrayen
+        function sjekkOrd(ord) {
+            if (programming_words.includes(ord)) {
+                return "Ja";
+            } else {
+                return "Nei";
+            }
+        }
+
+        // Kjør funksjonen på de tre ordene og skriv resultatene til HTML
+        document.getElementById("betingelse_sjekk").textContent = sjekkOrd("betingelse");
+        document.getElementById("algoritme_sjekk").textContent = sjekkOrd("algoritme");
+        document.getElementById("problemlosning_sjekk").textContent = sjekkOrd("problemløsning");
+
+
+
         //PROBLEM 3
         const tall_array_en = [9, 13, 5, 62, 11, 6, 28, 31, 17]
         const tall_array_to = [23, 76, 88, 13, 56, 90, 42]
 
         //AI-kode for å løse problem 3 her.
+         function beregnGjennomsnitt(array) {
+            let sum = 0;
+            for (let i = 0; i < array.length; i++) {
+                sum += array[i];
+            }
+            return sum / array.length;
+        }
+
+        // Kjør funksjonen på arrayene
+        const gjennomsnittEn = beregnGjennomsnitt(tall_array_en);
+        const gjennomsnittTo = beregnGjennomsnitt(tall_array_to);
+
+        // Skriv resultatet inn i HTML
+        document.getElementById("avg_array_one").textContent = gjennomsnittEn.toFixed(2);
+        document.getElementById("avg_array_two").textContent = gjennomsnittTo.toFixed(2);
+
     </script>
 </body>
 </html>

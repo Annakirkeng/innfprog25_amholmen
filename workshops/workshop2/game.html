@@ -25,8 +25,9 @@
             </ul>
         </section>
         <img src="icons/c3_logo.svg" alt="Code Concept Collector" />
-        <nav>
+            <!--onClick="toggleVisibility(`notebook`)"-->
             <button id="notebookToggler"><img src="icons/notebook.svg" />Åpne kladdeboka <span class="shortcut">n</span></button>
+            <!--onClick="toggleVisibility(`info`)"-->
             <button id="infoToggler">Info / Hvordan spille <span class="shortcut">i</span></button>
         </nav>
     </header>
@@ -77,7 +78,7 @@
         //PREPARE GAME CONFIG AND VARIABLES
         //TODO: config
         const gameConfig = {
-            playerName: "Jostein",
+            playerName: "Anna",
             energy: 10,
             points: 4000,
             duration: 30
@@ -93,7 +94,6 @@
             arrays: 7
         }
 
-        
 
         //(BONUS) TODO: function for all prints
         function updateStaticUI() {
@@ -115,6 +115,67 @@
         }
 
         updateStaticUI()
+
+        //oppgave1 Lag en funksjon for å skjule/vise notatblokk og informasjonsskjema
+        // #notebook
+        // #info
+        function toggleVisibility (elementid){
+            const elem = document.getElementById(elementid)
+ 
+            if (elem.classList.contains("hidden")){
+                elem.style.display = "block"
+                elem.classList.remove("hidden")
+            } else {
+                elem.style.display = "none"
+                elem.classList.add("hidden")
+            }
+        }
+        toggleVisibility("info")
+
+        //oppgave 2 Endre synligheten på notatbok og info-tekst med tastaturet
+        document.addEventListener("keydown", (event) => {
+            if(event.code === "KeyN"){
+                toggleVisibility("notebook")
+            } else if (event.code === "KeyI"){
+                toggleVisibility("info")
+            }
+        })
+
+        //oppgave 3 Bytt onClick fra oppgave 1 med addEventListeners
+        const infoTogglerBtn = document.getElementById("infoToggler")
+        infoTogglerBtn.addEventListener("click", () => {
+            toggleVisibility("info")
+        })
+
+        const notebookTogglerBtn = document.getElementById("notebookToggler")
+        notebookTogglerBtn.addEventListener("click", () => {
+            toggleVisibility("notebook")
+        })
+
+        //oppgave 4 Funksjon for å oppdatere HTML-utskrift av én konfigurasjonsverdi
+        function updateSingleStaticUI(elementid, value){
+            document.getElementById(elementid).innerHTML = value
+        }
+
+        updateSingleStaticUI("points", 10)
+        updateSingleStaticUI("energy", 60)
+
+        //oppgave 5  Funksjon for å oppdatere konfigurasjonsverdier
+        function updateConfigValue(configType, value){
+            configType === "variables" ? notebook.variables += value : null
+            configType === "arrays" ? notebook.arrays += value : null
+            configType === "loops" ? notebook.loops += value : null
+            configType === "functions" ? notebook.functions += value : null
+
+            configType === "energy" ? gameConfig.energy += value : null
+            configType === "points" ? gameConfig.points += value : null
+            configType === "duration" ? gameConfig.duration += value : null
+
+            updateStaticUI()
+        }
+
+        updateConfigValue("variables", 10)
+        updateConfigValue("arrays", 100)
     </script>
 </body>
 </html>

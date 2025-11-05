@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas</title>
+    <style>
+        #drawing-area {
+            border: 2px solid rgb(255, 81, 118);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="drawing-area"></canvas>
+
+    <script>
+        const canvas = document.getElementById("drawing-area")
+        const ctx = canvas.getContext("2d")
+
+        canvas.width = 800
+        canvas.height = 600
+
+        const rectangle = {
+            x: 100,
+            y: 500,
+            width: 600,
+            height: 200
+        }
+
+        const circle = {
+            x: 200,
+            y: 200,
+            radius: 10
+        }
+
+        //Tegne streker
+        ctx.beginPath()
+        ctx.moveTo(0, 0)
+        ctx.lineTo(800, 600)
+        ctx.moveTo(800, 0)
+        ctx.lineTo(0, 600)
+        ctx.stroke()
+        ctx.closePath()
+
+        //Tegne kvadrat
+        ctx.beginPath()
+        ctx.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height)
+        ctx.fillStyle = "rgb(241, 136, 159)"
+        ctx.fill()
+        ctx.stroke()
+        ctx.closePath()
+
+        //Tegne sirkel
+        ctx.beginPath()
+        ctx.arc(circle.x, circle.y, circle.radius, 0, 2 * Math.PI)
+        ctx.fillStyle = "rgba(255, 81, 118, 0.5)"
+        ctx.fill()
+        ctx.stroke()
+        ctx.closePath()
+
+        //Tekst
+        ctx.beginPath()
+        ctx.font = "150px Arial"
+        ctx.strokeText("Hei!", 360, 420)
+        ctx.font = "24px Helvetica"
+        ctx.fillstyle = "black"
+        ctx.fillText("ANNA", 200, 200)
+        ctx.closePath()
+
+        //Tegne eksisterende bilde inn i Canvas 
+        const pumpkin = new Image(128, 128)
+        let pumpkinLoaded = false
+        pumpkin.onload = () => {
+            ctx.drawImage(pumpkin, 0, 0, 128, 128)
+        }
+        pumpkin.src = "pumpkin.png"
+
+    </script>
+</body>
+</html>

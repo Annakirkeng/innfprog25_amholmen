@@ -23,8 +23,6 @@
         const hexadecimal_characters = "ABCDEF1234567890"
         const hexadecimal_characters_array = Array.from(hexadecimal_characters)
         let random_color_code = "#"
-
-
         
         //Din kode for å løse problem 1 her.
         function randomHexCode() {
@@ -36,8 +34,7 @@
             
         }
         randomHexCode()
-
-
+        
 
         //PROBLEM 2
         const programming_words = ["variabel","funksjon","array","objekt","loop","betingelse","klasse","rekursjon","algoritme","kompilator"]
@@ -68,7 +65,7 @@
             })
             
             const average = sum / array.length
-            document.getElementById(elementId).innerHTML = average
+            document.getElementById(elementId).innerHTML = average.toFixed(0)
         }
         gjennomsnitt(tall_array_en, "avg_array_one")
         gjennomsnitt(tall_array_to, "avg_array_two")
