@@ -22,10 +22,12 @@
 
         // Oppgave 1.2
         function numberSelector() {
+            // Finner et tall mellom 1 og 9
             const number = Math.floor(Math.random() * 9) + 1
-            console
+            console.log(number)
+            // Legger tallet til i listen i HTML
             document.getElementById("numberList").innerHTML += `<li>${number}</li>`
-
+            // Sjekker om tallet er 4 eller 7, hvis ikke kaller funksjonen seg selv igjen
             if (number === 4 || number === 7) {
                 return
             } else {
@@ -35,6 +37,34 @@
         numberSelector()
 
         // Oppgave 1.3
+        /*
+        function skrivTall() {
+            // Velg et tilfeldig tall mellom 1 og 9
+            const tall = Math.floor(Math.random() * 9) + 1;
+
+            // Finn listen i HTML
+            const liste = document.getElementById("numberList");
+
+            // Legg til tallet som et nytt <li>-element
+            const nyttElement = document.createElement("li");
+            nyttElement.textContent = "Tallet er: " + tall;
+            liste.appendChild(nyttElement);
+
+            // Stopp hvis tallet er 4 eller 7
+            if (tall === 4 || tall === 7) {
+                const stopp = document.createElement("li");
+                stopp.textContent = "Rekursjonen stoppet ved " + tall + ".";
+                liste.appendChild(stopp);
+                return; // Avslutt rekursjonen
+            }
+
+            // Kall funksjonen igjen (rekursjon)
+            skrivTall();
+        }
+
+        // Start rekursjonen
+        skrivTall();
+        */
 
 
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ansattregister</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+    <body>
+        <header>
+            <h1>Ansattregister</h1>
+        </header>
+
+        <main>
+            <section id="filter">
+                <h2>Filtrerer ansatte</h2>
+
+                <label for="positionSelect">Velg stilling:</label>
+                <select id="positionSelect">
+                    <!--KOMMER-->
+                </select>
+
+                <section id="filterButtons">
+                    <button id="showAll">vis alle ansatte</button>
+                    <button id="showTeachers">vis undervisere</button>
+                    <button id="showAdmin">vis administrasjon</button>
+                </section>
+            </section>
+
+            <section id="employeeList">
+                <!--KOMMER-->
+            </section>
+        </main>
+
+        <script type="module">
+            import { employees, positions } from "../mappedel1/register.js"
+            import {listAllEmployeesHTML,getTeachers,getAdministrativeStaff,filterEmployeesByPosition, createEmployeeHTML} from "../mappedel1/action.js"
+
+            const positionSelect = document.getElementById("positionSelect")
+            const employeeListSection = document.getElementById("employeeList")
+
+            positions.forEach((position)=>{
+                const option = document.createElement("option")
+                option.value = position
+                option.textContent = position
+                positionSelect.appendChild(option)
+            })
+
+            function renderEmployees(employeeArray){
+                const html = employeeArray.map((employee) => createEmployeeHTML(employee)).join("")
+                employeeListSection.innerHTML = html
+            }
+            renderEmployees(employees)
+        </script>
+    </body>
+</html>

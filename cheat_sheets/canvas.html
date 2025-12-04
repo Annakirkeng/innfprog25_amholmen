@@ -68,7 +68,7 @@
         ctx.closePath()
 
         //Tegne eksisterende bilde inn i Canvas 
-        const pumpkin = new Image(128, 128)
+        const pumpkin = new Image()
         let pumpkinLoaded = false
         pumpkin.onload = () => {
             ctx.drawImage(pumpkin, 0, 0, 128, 128)

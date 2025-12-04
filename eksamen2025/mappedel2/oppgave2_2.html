@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refaktorering</title>
+</head>
+<body>
+    <!--ENDRING:lager en id for å vise det lengste ordet-->
+    <p id="longest-word"></p>
+    <!--ENDRING:lager en id for å vise gjennomsnittsalderen-->
+    <p id="average"></p>
+    
+    <script>
+        //Denne koden finner det lengste ordet i en liste med ord.
+        //ENDRING: Fjernet funksjonene og brukte en enkel variabel for å lagre ordlisten
+            let ordListe = ["kode", "programmering", "design", "data", "variabel"]
+
+        //ENDRING: Variabel for å lagre det lengste ordet
+            let lengste = ""
+
+        //ENDRING: En vanlig for-løkke for å finne det lengste ordet
+                for (let i = 0; i < ordListe.length; i++) {
+                    let ord = ordListe[i];
+        // ENDRING: Sjekker bare om ordet er lengre enn det nåværende lengste ordet
+                    if (ord.length > lengste.length) {
+                        lengste = ord;
+                    } 
+                }
+        //ENDRING: Viser resultatet direkte i HTML i stedet for å bruke en funksjon for det
+            document.getElementById("longest-word").innerHTML = "Det lengste ordet i listen er: " + lengste
+
+
+        //Denne koden regner ut gjennomsnittsalderen til en gruppe personer.
+        //ENDRING: Fjernet alle unødvendige funksjoner fordi de ikke trengtes for å regne ut gjennomsnittsalderen
+            const Ola = 24
+            const Kari = 32
+            const Per = 29
+            const Anne = 41
+
+        //ENDRING: Bruker enkle const variabler i stedet for å hente alder fra en liste med objekter
+            const average = (Ola + Kari + Per + Anne) / 4
+
+        //ENDRING: Viser resultatet direkte i HTML i stedet for å bruke en funksjon for det
+            document.getElementById("average").innerHTML = "Gjennomsnittsalderen i gruppen er " + average + " år."
+    
+    </script>
+</body>
+</html>
