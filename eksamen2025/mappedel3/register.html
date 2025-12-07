@@ -9,18 +9,10 @@
 </head>
     <body>
         <header>
-            <h1>Ansattregister</h1>
+            <h1>Høgskolen JS</h1>
         </header>
 
         <main>
-            <section id="filter">
-                <h2>Filtrerer ansatte</h2>
-
-                <label for="positionSelect">Velg stilling:</label>
-                <select id="positionSelect">
-                    <!--KOMMER-->
-                </select>
-
                 <section id="filterButtons">
                     <button id="showAll">vis alle ansatte</button>
                     <button id="showTeachers">vis undervisere</button>
@@ -28,30 +20,71 @@
                 </section>
             </section>
 
-            <section id="employeeList">
-                <!--KOMMER-->
+            <section id="positionFilter">
+                <p>vis kun stilling:</p>
+                <section id="positionButtons"></section>
+            </section>
+
+            <h2>Ansatte</h2>
+
+            <section id="employeeList"></section>
+
+            <section id="courseOverview">
+                <h2>Kursoversikt</h2>
+                <ul id="courseList"></ul>
             </section>
         </main>
 
         <script type="module">
             import { employees, positions } from "../mappedel1/register.js"
-            import {listAllEmployeesHTML,getTeachers,getAdministrativeStaff,filterEmployeesByPosition, createEmployeeHTML} from "../mappedel1/action.js"
+            import {getTeachers,getAdministrativeStaff,filterEmployeesByPosition, createEmployeeHTML} from "../mappedel1/action.js"
+            import {getAllCourses} from "../mappedel1/action.js"
 
-            const positionSelect = document.getElementById("positionSelect")
             const employeeListSection = document.getElementById("employeeList")
+            const showAllButton = document.getElementById("showAll")
+            const showTeachersButton = document.getElementById("showTeachers")
+            const showAdminButton = document.getElementById("showAdmin")
+            const positionButtonsSection = document.getElementById("positionButtons")
 
-            positions.forEach((position)=>{
-                const option = document.createElement("option")
-                option.value = position
-                option.textContent = position
-                positionSelect.appendChild(option)
+            positions.forEach((positionName) => {
+                const button = document.createElement ("button")
+                button.textContent = positionName
+
+                button.addEventListener("click", () => {
+                    const filtered = filterEmployeesByPosition(positionName)
+                    renderEmployees(filtered)
+                })
+                positionButtonsSection.appendChild(button)
             })
+
 
             function renderEmployees(employeeArray){
                 const html = employeeArray.map((employee) => createEmployeeHTML(employee)).join("")
                 employeeListSection.innerHTML = html
             }
+
+            function renderCourse(){
+                const courseList = document.getElementById("courseList")
+                const courses = getAllCourses()
+
+                courseList.innerHTML = courses.map((course) => `<li>${course}</li>`).join("")
+            }
+
+            showAllButton.addEventListener("click", ()=>{
+                renderEmployees(employees)
+            })
+            showTeachersButton.addEventListener("click", ()=>{
+                const teachers = getTeachers()
+                renderEmployees(teachers)
+            })
+
+            showAdminButton.addEventListener("click", ()=>{
+                const adminStaff = getAdministrativeStaff()
+                renderEmployees(adminStaff)
+            })
+
             renderEmployees(employees)
+            renderCourse()
         </script>
     </body>
 </html>

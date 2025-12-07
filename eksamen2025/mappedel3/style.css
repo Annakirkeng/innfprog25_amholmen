@@ -1,23 +1,149 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
-    padding: 0;
+    background-color: #e9f5ff;
 }
 
 header {
-    background-color: #00458b;
+    background-color: #1b8fbf;
     color: white;
-    padding: 1rem;
+    padding: 1rem 0;
+    text-align: center;
 }
 
 main {
-    padding: 1rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+h1, h2 {
+    margin-top: 0;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #1b8fbf;
+    background-color: white;
+    color: #1b8fbf;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background-color: #1b8fbf;
+    color: white;
+}
+
+#filter {
+    margin-bottom: 2rem;
+}
+
+#filter h2 {
+    margin-bottom: 1rem;
+}
+
+#filterButtons {
+    margin-top: 1rem;
+}
+
+#filterButtons button {
+    margin-right: 0.5rem;
+}
+
+#employeeList {
+    margin-top: 1rem;
 }
 
 .employee {
     background-color: white;
     border: 1px solid #ddd;
-    border-radius: 5px;
+    border-radius: 6px;
     padding: 1rem;
+    margin: 0.5rem;
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    box-sizing: border-box;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.employee h2 {
+    margin-top: 0;
+}
+
+#addEmployee {
+    margin-bottom: 2rem;
+}
+
+#addEmployee h2 {
     margin-bottom: 1rem;
+}
+
+#employeeForm {
+    max-width: 400px;
+}
+
+#employeeForm label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+#employeeForm input, #employeeForm select {
+    width: 100%;
+    padding: 0.4rem;
+    margin-top: 0.2rem;
+    box-sizing: border-box;
+}
+
+#allEmployees {
+    margin-top: 2rem;
+}
+
+#allEmployees h2 {
+    margin-bottom: 1rem;
+}
+
+#allEmployees button {
+    margin-top: 0.5rem;
+}
+
+#positionFilter {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+#positionFilter p {
+    margin: 0;
+    font-weight: normal;
+}
+
+#positionButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+#courseOverview {
+    margin-top: 3rem;
+    padding: 1.5rem;
+}
+
+#courseOverview h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+#courseList {
+    list-style-position: inside;
+    padding-left: 0;
+    margin: 0;
+}
+
+#courseList li {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
 }

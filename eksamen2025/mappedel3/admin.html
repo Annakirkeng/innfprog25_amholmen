@@ -9,12 +9,12 @@
 </head>
 <body>
     <header>
-        <h1>Administrer ansatte</h1>
+        <h1>Høgskolen JS</h1>
     </header>
 
     <main>
         <section id="addEmployee">
-            <h2>Legg til ny ansatt</h2>
+            <h2>Legg til ansatt</h2>
 
             <form id="employeeForm">
                 <label for="name">Navn:</label>
@@ -46,7 +46,72 @@
     </main>
 
     <script type="module">
-        //KOMMER
+        import { employees, positions } from "../mappedel1/register.js"
+        import { createEmployeeHTML, removeEmployeeById } from "../mappedel1/action.js"
+
+        const positionSelect = document.getElementById("position")
+        const adminListSection = document.getElementById("allEmployees")
+        const nameInput = document.getElementById("name")
+        const officeInput = document.getElementById("office")
+        const emailInput = document.getElementById("email")
+        const coursesInput = document.getElementById("courses")
+        const employeeForm = document.getElementById("employeeForm")
+
+        positions.forEach((position)=>{
+            const option = document.createElement("option")
+            option.value = position
+            option.textContent = position
+            positionSelect.appendChild(option)
+        })
+
+        function renderAdminList(){
+            adminListSection.innerHTML = ""
+
+            employees.forEach((employee) => {
+                const container = document.createElement("section")
+                container.innerHTML = createEmployeeHTML(employee)
+
+                const deleteButton = document.createElement("button")
+                deleteButton.textContent = "Slett ansatt"
+
+                deleteButton.addEventListener("click", () => {
+                    removeEmployeeById(employee.id)
+                    renderAdminList()
+                })
+
+                container.appendChild(deleteButton)
+                adminListSection.appendChild(container)
+            })
+        }
+
+        employeeForm.addEventListener("submit", (event) => {
+            event.preventDefault()
+            
+            let coursesArray = []
+            if (coursesInput.value.trim() !==""){
+                coursesArray = coursesInput.value.split(",")
+
+                for (let i = 0; i < coursesArray.length; i++){
+                    coursesArray[i] = coursesArray[i].trim()
+                }
+            }
+
+            const newEmployee = {
+                id: employees.lengt + 1,
+                name: nameInput.value,
+                office: officeInput.value,
+                email: emailInput.value,
+                positionIndex: positions.indexOf(positionSelect.value),
+                courses: coursesArray
+            }
+
+            employees.push(newEmployee)
+
+            employeeForm.reset()
+            renderAdminList()
+        })
+        renderAdminList()
+
     </script>
 </body>
 </html>
